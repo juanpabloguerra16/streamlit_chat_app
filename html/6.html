@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ongoing Projects</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 20px;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 16px;
+            background-color: #e0e0e0;
+            font-size: 14px;
+            color: #333;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+
+        .chip:hover {
+            background-color: #d5d5d5;
+        }
+
+        .chip img {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            margin-top: 5px;
+            border-radius: 4px;
+            padding: 10px;
+            width: 200px;
+            z-index: 1;
+        }
+
+        .dropdown li {
+            list-style: none;
+            padding: 8px 0;
+            cursor: pointer;
+        }
+
+        .dropdown li:hover {
+            background-color: #f0f0f0;
+        }
+
+        .chip-dropdown:hover .dropdown {
+            display: block;
+        }
+
+        textarea {
+            width: 80%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 8px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            resize: none;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            margin-top: 20px;
+            border-radius: 20px;
+            padding: 10px;
+            width: 400px;
+            z-index: 1;
+        }
+
+        .dropdown li {
+            list-style: none;
+            padding: 8px 0;
+            cursor: pointer;
+        }
+
+        .dropdown li:hover {
+            background-color: #f0f0f0;
+        }
+
+        .chip-dropdown:hover .dropdown {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    Based on <span class="chip">
+        <img src="https://cdn.iconscout.com/icon/free/png-256/free-google-drive-7662285-6297221.png"
+            alt="Yellow Status">
+            Backend Framework
+    </span> the backend is using REST framework. However, based on the latest commit on
+<span class="chip">
+        <img src="https://seeklogo.com/images/G/github-logo-5F384D0265-seeklogo.com.png"
+            alt="Yellow Status">
+            backend/config.py
+    </span>
+the team has switched to gRPC
+</body>
+
+</html>

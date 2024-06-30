@@ -1,27 +1,71 @@
 import streamlit as st
-import requests, time
+import time
+from bs4 import BeautifulSoup
+
+if 'chat_counter' not in st.session_state:
+    st.session_state['chat_counter'] = 2
+
+def split_html_sections(html_content):
+    soup = BeautifulSoup(html_content, 'html.parser')
+    sections = soup.find_all(class_='section')
+    return [str(section) for section in sections]
+
+def load_html_file(file_path):
+    with open(file_path, 'r', encoding='utf-8') as file:
+        return file.read()
 
 with st.chat_message("assistant", avatar=":material/robot:"):
-    response =  requests.get("http://127.0.0.1:8000/html/1.html")
-    st.html(response.text)
-
-chat_counter = 2
+    html_content = load_html_file("html/1.html")
+    st.html(html_content)
 
 if prompt := st.chat_input("How can I help you?"):
-    if chat_counter == 2:
+    if st.session_state.chat_counter == 2:
         
         with st.chat_message("user", avatar=":material/person:"):
-            response =  requests.get("http://127.0.0.1:8000/html/2.html")
-            st.html(response.text)
-            time.sleep(5)
+            html_content = load_html_file("html/2.html")
+            st.html(html_content)
+            time.sleep(0.5)
             
         with st.chat_message("assistant", avatar=":material/robot:"):
-            response =  requests.get("http://127.0.0.1:8000/html/3.html")
-            # your task is to parse and split the response by html section by section and write each chunk to st.html
-            # refactor here
-            st.html(response.text)
+            html_content = load_html_file("html/3.html")
+            sections = split_html_sections(html_content)
+            for section in sections:
+                st.html(section)
+                time.sleep(1)
         
+        st.session_state.chat_counter += 1
+    elif st.session_state.chat_counter == 3:
+        with st.chat_message("user", avatar=":material/person:"):
+            st.write(prompt)
+            
+        with st.chat_message("assistant", avatar=":material/robot:"):
+            html_content = load_html_file("html/4.html")
+            sections = split_html_sections(html_content)
+            for section in sections:
+                st.html(section)
+                time.sleep(1)
         
-        
-        chat_counter += 1
-        
+        st.session_state.chat_counter += 1
+                
+    elif st.session_state.chat_counter == 4:
+        with st.chat_message("user", avatar=":material/person:"):
+            st.write(prompt)
+            
+        with st.chat_message("assistant", avatar=":material/robot:"):
+            html_content = load_html_file("html/5.html")
+            sections = split_html_sections(html_content)
+            for section in sections:
+                st.html(section)
+                time.sleep(1)
+        st.session_state.chat_counter += 1
+    elif st.session_state.chat_counter == 5:
+        with st.chat_message("user", avatar=":material/person:"):
+            st.write(prompt)
+            
+        with st.chat_message("assistant", avatar=":material/robot:"):
+            html_content = load_html_file("html/6.html")
+            sections = split_html_sections(html_content)
+            for section in sections:
+                st.html(section)
+                time.sleep(1)
+        st.session_state.chat_counter += 1
